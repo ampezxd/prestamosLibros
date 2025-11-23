@@ -6,12 +6,21 @@ package com.indigo.prestamosLibros.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author ANDRES GUTIERREZ
  */
 @Entity
+@Table(name = "prestamo")
+@Data
+
+@NoArgsConstructor
+
+@AllArgsConstructor
 public class Prestamo {
     
     @Id
@@ -22,6 +31,6 @@ public class Prestamo {
     private LocalDate fechaMaximaDevolucion;
     
     @ManyToOne(optional = false)
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
     }

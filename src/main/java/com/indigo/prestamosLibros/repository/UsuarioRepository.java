@@ -4,7 +4,8 @@
  */
 package com.indigo.prestamosLibros.repository;
 
-import com.indigo.prestamosLibros.model.Prestamo;
+import com.indigo.prestamosLibros.model.Usuario;
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -14,9 +15,7 @@ import org.springframework.stereotype.Repository;
  * @author ANDRES GUTIERREZ
  */
 @Repository
-public interface PrestamoRepository extends JpaRepository<Prestamo, UUID>{
-    Prestamo findByIdentificacionUsuario(String identificacionUsuario);
-
-    public int countByUsuario_Identificacion(String identificacion);
-    
+public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
+    Optional<Usuario> findByIdentificacion(String identificacion);
 }
+
