@@ -10,12 +10,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author ANDRES GUTIERREZ
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
  
     @Id

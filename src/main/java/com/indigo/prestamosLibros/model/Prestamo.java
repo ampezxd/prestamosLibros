@@ -6,12 +6,18 @@ package com.indigo.prestamosLibros.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author ANDRES GUTIERREZ
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Prestamo {
     
     @Id
