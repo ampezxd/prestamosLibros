@@ -15,8 +15,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PrestamoRepository extends JpaRepository<Prestamo, UUID>{
-    Prestamo findByIdentificacionUsuario(String identificacionUsuario);
+    //Optional<Prestamo> findByIdentificacionUsuario(String identificacionUsuario);
 
-    public int countByUsuario_Identificacion(String identificacion);
+    public long countByUsuario_Identificacion(String identificacion);
     
 }

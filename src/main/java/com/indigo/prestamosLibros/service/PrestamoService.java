@@ -14,6 +14,7 @@ import java.util.UUID;
  * @author ANDRES GUTIERREZ
  */
 public interface PrestamoService {
+
     PrestamoResponse crearPrestamo(PrestamoRequest request);
     
     PrestamoDetailResponse obtenerPrestamo(UUID id);

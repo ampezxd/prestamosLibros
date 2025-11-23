@@ -27,12 +27,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
-
 public class PrestamoServiceImpl implements PrestamoService {
+
     private final UsuarioRepository usuarioRepository;
     private final PrestamoRepository prestamoRepository;
-    
-    
+
     private LocalDate calcularFechaDevolucion(int tipoUsuario) {
         int diasASumar;
         
@@ -83,10 +82,9 @@ public class PrestamoServiceImpl implements PrestamoService {
                 });
         //Usuario invitado
         if (usuario.getTipoUsuario() == 3) {
-            int prestamosActivos = prestamoRepository
-                     .countByUsuario_Identificacion(usuario.getIdentificacion());
+            long prestamosActivos = prestamoRepository.countByUsuario_Identificacion(usuario.getIdentificacion());
             
-            if (prestamosActivos >= 1) {
+            if (prestamosActivos >= 1L) {
                 //retornar error 400
                 throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
@@ -105,24 +103,21 @@ public class PrestamoServiceImpl implements PrestamoService {
         Prestamo prestamoGuardado = prestamoRepository.save(nuevoPrestamo);
         
         //Respuesta
-        
         return new PrestamoResponse(
         prestamoGuardado.getId(),
         prestamoGuardado.getFechaMaximaDevolucion());
     }
-    
+
     @Override
     public PrestamoDetailResponse obtenerPrestamo (UUID id) {
-        Prestamo prestamo = prestamoRepository.findById(id)
-                .orElseThrow(()->
-                new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "El prestamo no existe"));
+        Prestamo prestamo = prestamoRepository.findById(id).get();
         
         return new PrestamoDetailResponse(
-        prestamo.getId(),
-        prestamo.getIsbn(),
-        prestamo.getUsuario().getIdentificacion(),
-        prestamo.getUsuario().getTipoUsuario(),
-        prestamo.getFechaMaximaDevolucion());
+            prestamo.getId(),
+            prestamo.getIsbn(),
+            prestamo.getUsuario().getIdentificacion(),
+            prestamo.getUsuario().getTipoUsuario(),
+            prestamo.getFechaMaximaDevolucion()
+        );
     }
 }
