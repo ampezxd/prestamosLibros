@@ -13,6 +13,9 @@ import java.util.UUID;
  */
 public record PrestamoResponse (
         UUID id,
+        String isbn,
+        String identificacionUsuario,
+        Integer tipoUsuario,
         LocalDate fechaMaximaDevolucion) {
     
 }
