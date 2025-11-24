@@ -69,3 +69,13 @@ Se utilizaron anotaciones de **Jakarta Bean Validation** (`@NotNull`, `@NotBlank
 Se utilizaron métodos de repositorio personalizados de Spring Data JPA para consultas específicas y optimizadas:
 * `countByUsuario_Identificacion(String identificacion)`: Contar préstamos activos de un usuario mediante una consulta de propiedad anidada (`usuario` -> `identificacion`).
 * `Optional<Prestamo> findByIdentificacionUsuario(String identificacionUsuario)`: Búsqueda de un préstamo por la identificación de un usuario.
+
+---
+
+## **Modelo Entidad-Relación**
+
+- **Imagen**: A continuación se muestra el diagrama entidad-relación del modelo de datos (Usuario — PRESTAMO).
+
+![Modelo Entidad-Relación](/bd_libros.png)
+
+_Relación: Un `Usuario` puede tener muchos `PRESTAMO` (1:N)._ 
