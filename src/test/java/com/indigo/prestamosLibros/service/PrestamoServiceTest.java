@@ -317,7 +317,7 @@ public class PrestamoServiceTest {
         assertTrue(exception.getReason().contains("El préstamo no existe"));
     }
 
-    
+
     /**
      * Calcula la fecha que resulta de sumar días hábiles a una fecha de inicio.
      */
