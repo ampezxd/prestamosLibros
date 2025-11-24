@@ -19,7 +19,7 @@ public record PrestamoResponse (
 
         @Schema(description = "Identificador único universal (UUID) asignado al nuevo préstamo.",
                 example = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
-                requiredMode = Schema.RequiredMode.REQUIRED, // Indica que es obligatorio
+                requiredMode = Schema.RequiredMode.REQUIRED,
                 format = "uuid")
         @NotNull(message = "El ID del préstamo no puede ser nulo.")
         UUID id,

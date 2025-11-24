@@ -47,8 +47,8 @@ public class PrestamoServiceImpl implements PrestamoService {
                 break;
             default:
                 throw new ResponseStatusException(
-                            HttpStatus.BAD_REQUEST, 
-                            "Tipo de usuario no permitido"); //Recordar manejar como 400
+                        HttpStatus.BAD_REQUEST,
+                        "Tipo de usuario no permitido: " + tipoUsuario); //Manejar error 400
         }
         LocalDate fechaActual = LocalDate.now();
         LocalDate fechaMaxima = fechaActual;
@@ -110,8 +110,11 @@ public class PrestamoServiceImpl implements PrestamoService {
 
     @Override
     public PrestamoDetailResponse obtenerPrestamo (UUID id) {
-        Prestamo prestamo = prestamoRepository.findById(id).get();
-        
+        Prestamo prestamo = prestamoRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "El préstamo no existe"));
+
         return new PrestamoDetailResponse(
             prestamo.getId(),
             prestamo.getIsbn(),
